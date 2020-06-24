@@ -31,9 +31,6 @@
                     image: this.image
                 });
             },
-            goToInfoPage(name) {
-                console.log("he");
-            }
         },
         props: {
             name: {

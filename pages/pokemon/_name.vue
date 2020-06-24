@@ -91,7 +91,6 @@
           for (let i = 0; i < this.pokemonData.types.length; i++) {
               this.pokemonTypes.push(this.pokemonData.types[i].type.name);
           }
-
           if (this.pokemonData.sprites.back_default)
               this.pokemonSprites.push(this.pokemonData.sprites.back_default);
           if (this.pokemonData.sprites.back_female)
@@ -108,8 +107,6 @@
               this.pokemonSprites.push(this.pokemonData.sprites.front_shiny);
           if (this.pokemonData.sprites.front_shiny_female)
               this.pokemonSprites.push(this.pokemonData.sprites.front_shiny_female);
-
-
           this.pokemonHeight = this.pokemonData.height;
           this.pokemonWeight = this.pokemonData.weight;
           this.pokemonId = this.pokemonData.id;
