@@ -4,20 +4,20 @@
             <h1 class="page-section text-center">
                 Pokemon Pro Team Builder
             </h1>
-            <h3>
-                Current roster
-            </h3>
-            <PokemonRoster ref="pokemon-roster">
+            <PokemonRoster>
             </PokemonRoster>
             <div class="page-section">
                 <div class="row center-items">
                     <div class="col search-bar text-center">
-                        search
+                        <input type="text" v-model="searchQuery" placeholder="Search" />
                     </div>
                 </div>
                 <p v-if="$fetchState.pending">Fetching pokemon...</p>
                 <p v-else-if="$fetchState.error">Error while fetching pokemon: {{ $fetchState.error.message }}</p>
-                <div ref="container" class="center-items">
+                <div>
+                    <div v-for="pokemon in filteredList">
+                        <PokemonNameplate :name=pokemon.name :url=pokemon.url :image=pokemon.image :id=pokemon.id />
+                    </div>
                 </div>
             </div>
         </div>
@@ -27,7 +27,6 @@
 <script>
     import PokemonNameplate from '../components/PokemonNameplate'
     import PokemonRoster from "../components/PokemonRoster";
-    import Vue from 'vue'
 
     export default {
         components: {
@@ -37,49 +36,32 @@
 
         data() {
             return {
-                pokemon: {
-
-                },
-                pokemonList: [
-                    {
-                        name: '',
-                        id: '',
-                        image: ''
-                    }
-                ]
+                searchQuery: null,
+                pokemonList: []
             }
         },
         async fetch () {
             this.pokemon = await this.$http.$get('https://pokeapi.co/api/v2/pokemon?limit=175');
 
-            for (let i = 0; i < this.pokemon.results.length; i++)
-            {
-                console.log(this.pokemon.results[i].name);
-                console.log(this.pokemon.results[i].url);
-                let imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i + 1}.png`;
-
-                var pokemonInstance = Vue.extend(PokemonNameplate);
-                var instance = new pokemonInstance();
-                instance.name = this.pokemon.results[i].name;
-                instance.url = this.pokemon.results[i].url;
-                instance.image = imgUrl;
-                instance.$mount();
-                this.$refs.container.appendChild(instance.$el);
-
+            for (let i = 0; i < this.pokemon.results.length; i++) {
+                this.pokemonList.push({
+                    name: this.pokemon.results[i].name,
+                    url: this.pokemon.results[i].url,
+                    id: i + 1,
+                    image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i + 1}.png`,
+                })
             }
-
-            // this.pokemon.results.map((data, index) => ({
-            //     name: data.name,
-            //     id: index + 1,
-            //     image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index +
-            //     1}.png`,
-            // }));
         },
-        scripts: {
-            getTotalPokemon() {
-
-            },
-
+        computed: {
+            filteredList() {
+                if (this.searchQuery) {
+                    return this.pokemonList.filter(((item) => {
+                        return this.searchQuery.toLowerCase().split(' ').every(v => item.name.toLowerCase().includes(v))
+                    }))
+                }
+                else
+                    return this.pokemonList;
+            }
         }
     }
 </script>

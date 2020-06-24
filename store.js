@@ -14,8 +14,8 @@ export const mutations = {
         {
             if (store.currentRoster[i].name === pokemonName)
             {
-                console.log("REMOVING : " + i);
                 store.currentRoster.splice(i, 1);
+                break;
             }
         }
     }
