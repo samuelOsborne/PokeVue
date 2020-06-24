@@ -2,6 +2,8 @@
 
 A little pokedex made with VueJS and Nuxt.
 
+Check it out here: https://samuelosborne.github.io/PokeVue/
+
 # Functions
 
 - List of first pokemon
