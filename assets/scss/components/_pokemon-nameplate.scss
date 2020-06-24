@@ -1,0 +1,14 @@
+.pokemon-nameplate {
+	width: 60%;
+	height: 10%;
+	box-shadow: $bg-shadow-medium;
+	background-color: $white;
+    margin: 40px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.pokemon-nameplate:active {
+    color: white;
+    background-color: #2bffc6;
+}
