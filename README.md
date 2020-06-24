@@ -1,5 +1,14 @@
 # PokeVue
 
+A little pokedex made with VueJS and Nuxt.
+
+# Functions
+
+- List of first pokemon
+- Add pokemon to your roster (max 6)
+- Details page for each pokemon
+- Search
+
 ## Build Setup
 
 ```bash
