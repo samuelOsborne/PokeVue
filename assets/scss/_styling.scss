@@ -1,0 +1,73 @@
+.app-font-family {
+	font-family: "Avenir LT Std Black", Avenir, Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-weight: 300;
+}
+
+.text-align-left {
+	text-align: left;
+}
+
+.text-align-right {
+	text-align: right;
+}
+
+.background-gray-100 {
+	background-color: $gray-100;
+}
+
+.background-gray-200 {
+	background-color: $gray-200;
+}
+
+.background-gray-300 {
+	background-color: $gray-300;
+}
+
+.background-gray-400 {
+	background-color: $gray-400;
+}
+
+.background-gray-500 {
+	background-color: $gray-500;
+}
+
+.background-gray-600 {
+	background-color: $gray-600;
+}
+
+.background-gray-600 {
+	background-color: $gray-700;
+}
+
+.background-gray-800 {
+	background-color: $gray-800;
+}
+
+.background-gray-900 {
+	background-color: $gray-900;
+}
+
+.background-lightest-purple {
+	background-color: $lightest-purple;
+}
+
+.background-light-purple {
+	background-color: $light-purple;
+}
+
+.background-medium-purple {
+	background-color: $medium-purple;
+}
+
+.background-dark-purple {
+	background-color: $dark-purple;
+}
+
+.background-purple-grad {
+	background: rgb(142,65,240);
+	background: linear-gradient(180deg, rgba(142,65,240,1) 0%, rgba(170,112,244,1) 100%);
+	//background: rgb(161,96,242);
+	//background: linear-gradient(180deg, rgba(161,96,242,1) 0%, rgba(170,112,244,1) 100%);}
+}
