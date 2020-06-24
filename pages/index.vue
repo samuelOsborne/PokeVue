@@ -1,17 +1,24 @@
 <template>
-    <div class="container app-font-family">
-        <h1 class="page-section text-center">
-            Pokemon Team Builder
-        </h1>
-        <div class="page-section">
-            <div class="row center-items">
-                <div class="col search-bar text-center">
-                    search
+    <div>
+        <div class="container app-font-family">
+            <h1 class="page-section text-center">
+                Pokemon Pro Team Builder
+            </h1>
+            <h3>
+                Current roster
+            </h3>
+            <PokemonRoster ref="pokemon-roster">
+            </PokemonRoster>
+            <div class="page-section">
+                <div class="row center-items">
+                    <div class="col search-bar text-center">
+                        search
+                    </div>
                 </div>
-            </div>
-            <p v-if="$fetchState.pending">Fetching pokemon...</p>
-            <p v-else-if="$fetchState.error">Error while fetching pokemon: {{ $fetchState.error.message }}</p>
-            <div ref="container" class="center-items">
+                <p v-if="$fetchState.pending">Fetching pokemon...</p>
+                <p v-else-if="$fetchState.error">Error while fetching pokemon: {{ $fetchState.error.message }}</p>
+                <div ref="container" class="center-items">
+                </div>
             </div>
         </div>
     </div>
@@ -19,11 +26,13 @@
 
 <script>
     import PokemonNameplate from '../components/PokemonNameplate'
+    import PokemonRoster from "../components/PokemonRoster";
     import Vue from 'vue'
 
     export default {
         components: {
-            PokemonNameplate
+            PokemonNameplate,
+            PokemonRoster
         },
 
         data() {
